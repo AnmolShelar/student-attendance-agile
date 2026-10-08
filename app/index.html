@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#13233f">
+  <title>Classroom — Student Attendance</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Classroom home"><span class="brand-mark">C</span><span>classroom<span class="brand-dot">.</span></span></a>
+      <div class="topbar-right"><span class="term">SEMESTER V</span><span class="avatar" aria-label="Instructor">AS</span></div>
+    </header>
+
+    <section class="intro">
+      <div>
+        <p class="eyebrow">ATTENDANCE · DATA SCIENCE</p>
+        <h1>Good morning, Anmol <span aria-hidden="true">✦</span></h1>
+        <p class="subhead">Take attendance and keep your class on track.</p>
+      </div>
+      <label class="date-control">SESSION DATE<input id="session-date" type="date" aria-label="Session date"></label>
+    </section>
+
+    <section class="stats" aria-label="Attendance summary">
+      <article class="stat-card total"><div class="stat-label">ENROLLED</div><div id="total-count" class="stat-number">3</div><div class="stat-note">students in this class</div><span class="stat-icon">◎</span></article>
+      <article class="stat-card present"><div class="stat-label">PRESENT</div><div id="present-count" class="stat-number">0</div><div class="stat-note">here today</div><span class="stat-icon">✓</span></article>
+      <article class="stat-card late"><div class="stat-label">LATE</div><div id="late-count" class="stat-number">0</div><div class="stat-note">arrived late</div><span class="stat-icon">◷</span></article>
+      <article class="stat-card absent"><div class="stat-label">ABSENT</div><div id="absent-count" class="stat-number">0</div><div class="stat-note">not in class</div><span class="stat-icon">–</span></article>
+    </section>
+
+    <section class="attendance-panel">
+      <div class="panel-heading">
+        <div><p class="eyebrow">YOUR ROSTER</p><h2>Class attendance <span id="roster-size" class="count-pill">3</span></h2><p id="session-label" class="panel-subtitle">Demo roster · select a date to view this session.</p></div>
+        <button id="mark-all" class="button button-primary">Mark all present <span aria-hidden="true">✓</span></button>
+      </div>
+      <div class="tools"><label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search students…" aria-label="Search students"></label><label class="filter-label">SHOW <select id="status-filter" aria-label="Filter by attendance status"><option value="all">Everyone</option><option value="unmarked">Not marked</option><option value="present">Present</option><option value="late">Late</option><option value="absent">Absent</option></select></label></div>
+      <div class="table-wrap"><table><thead><tr><th>STUDENT</th><th>ROLL NO.</th><th>ATTENDANCE STATUS</th></tr></thead><tbody id="student-list">
+        <tr><td><div class="student"><span class="student-avatar" style="background:#e8f0ff;color:#4772c4">A</span><span class="student-name">Anmol</span></div></td><td class="roll">DEMO-01</td><td><div class="status-group"><button class="status-button" data-status="present" data-student="demo01">Present</button><button class="status-button" data-status="late" data-student="demo01">Late</button><button class="status-button" data-status="absent" data-student="demo01">Absent</button></div></td></tr>
+        <tr><td><div class="student"><span class="student-avatar" style="background:#fcebf0;color:#bc5d79">P</span><span class="student-name">Patrick</span></div></td><td class="roll">DEMO-02</td><td><div class="status-group"><button class="status-button" data-status="present" data-student="demo02">Present</button><button class="status-button" data-status="late" data-student="demo02">Late</button><button class="status-button" data-status="absent" data-student="demo02">Absent</button></div></td></tr>
+        <tr><td><div class="student"><span class="student-avatar" style="background:#eaf7ef;color:#458863">H</span><span class="student-name">Harvey</span></div></td><td class="roll">DEMO-03</td><td><div class="status-group"><button class="status-button" data-status="present" data-student="demo03">Present</button><button class="status-button" data-status="late" data-student="demo03">Late</button><button class="status-button" data-status="absent" data-student="demo03">Absent</button></div></td></tr>
+      </tbody></table><div id="empty-state" class="empty-state" hidden>No students match this search.</div></div>
+      <footer class="panel-footer"><span><i class="save-dot"></i><span id="save-status">Changes save automatically in this browser</span></span><button id="reset-data" class="text-button">Reset demo data</button></footer>
+    </section>
+    <footer class="page-footer">STUDENT ATTENDANCE SYSTEM <span>·</span> AGILE ITERATION DEMO</footer>
+  </main>
+  <script src="attendance.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

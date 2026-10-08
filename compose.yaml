@@ -1,0 +1,7 @@
+services:
+  attendance:
+    build: .
+    image: student-attendance:local
+    ports:
+      - "8080:80"
+    restart: unless-stopped

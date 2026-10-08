@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-container-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v6
+      - name: Run unit tests
+        run: node --test tests/attendance.test.js
+      - name: Build Docker image
+        run: docker build -t student-attendance:ci .
+      - name: Smoke test the container
+        run: |
+          docker run --detach --name attendance-ci -p 8080:80 student-attendance:ci
+          for attempt in {1..10}; do
+            if curl --fail --silent http://localhost:8080/ | grep -q 'Anmol'; then
+              docker stop attendance-ci
+              exit 0
+            fi
+            sleep 1
+          done
+          docker logs attendance-ci
+          exit 1
